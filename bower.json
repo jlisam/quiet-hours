@@ -15,5 +15,8 @@
     "moment": "2.10.6",
     "angular-pdf": "1.2.6",
     "angular-bootstrap": "~0.14.3"
+  },
+  "resolutions": {
+    "angular": "1.4.7"
   }
 }

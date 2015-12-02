@@ -18,5 +18,8 @@
   },
   "resolutions": {
     "angular": "1.4.7"
+  },
+  "engines": {
+    "npm": "2.13.4"
   }
 }

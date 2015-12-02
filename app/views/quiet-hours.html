@@ -1,0 +1,24 @@
+<div class="main">
+    <div class="h1 text-center">
+        <strong>{{ clock | date: 'medium'}}</strong>
+
+        <div class="h1 text-center text-danger" style="font-size:200%" ng-show="isQuietHours()">
+            <p></p>
+            <strong>QUIET HOURS</strong>
+            <p>Please do not disturb unless it's really really important</p>
+
+            <ng-pdf template-url="views/viewer.html" scale=1.5></ng-pdf>
+        </div>
+
+        <div class="h1 text-center text-info" style="font-size:200%" ng-hide="isQuietHours()">
+            <br>
+            <strong>QUIET HOURS IS OVER</strong>
+            <br>
+            <br>
+            <img src="/app/img/binary_heart.jpg" class="img-responsive center-block">
+            <br>
+            We love you, you are welcome to talk :)
+        </div>
+
+    </div>
+</div>

@@ -32,7 +32,7 @@ angular.module('myApp', [
 		return $scope.clock.getHours() >= 11 && $scope.clock.getHours() < 17
 	};
 
-	$scope.pdfUrl = '/app/img/ProgrammerInterrupted.pdf';
+	$scope.pdfUrl = 'img/ProgrammerInterrupted.pdf';
 
 	$timeout(tick, $scope.tickInterval);
 }]);

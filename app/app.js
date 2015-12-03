@@ -32,6 +32,10 @@ angular.module('myApp', [
 		return $scope.clock.getHours() >= 11 && $scope.clock.getHours() < 17
 	};
 
+	$scope.timeTillQuietHours = function () {
+		var hours = $scope.clock.getHours();
+	}
+
 	$scope.pdfUrl = 'img/ProgrammerInterrupted.pdf';
 
 	$timeout(tick, $scope.tickInterval);

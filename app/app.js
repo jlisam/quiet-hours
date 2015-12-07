@@ -16,12 +16,30 @@ angular.module('myApp', [
 		templateUrl: 'views/quiet-hours.html',
 		controller: 'QuietHoursCtrl',
 		controllerAs: 'quietHours'
+	});
+	$routeProvider.when('/setTime', {
+		templateUrl: 'views/quiet-hours.html',
+		controller: 'QuietHoursCtrl'
 	})
 }])
 
-.controller('QuietHoursCtrl', ['$scope', '$timeout', function($scope, $timeout) {
+.controller('QuietHoursCtrl', ['$scope', '$timeout', '$location', function($scope, $timeout, $routeParams) {
 	$scope.clock = new Date();
 	$scope.tickInterval = 1000; //ms
+
+	var init = function () {
+		var queryParams = $routeParams.search();
+		$scope.start = queryParams.start || 11;
+		$scope.end = queryParams.end || 7;
+		validHours($scope.start, $scope.end)
+
+	};
+
+	var validHours = function(start, end) {
+		if(start < 0 || end < 0 || start > 24 || end > 24) {
+			return false;
+		}
+	};
 
 	var tick = function() {
 		$scope.clock = new Date(); // get the current time
@@ -29,14 +47,11 @@ angular.module('myApp', [
 	};
 
 	$scope.isQuietHours = function () {
-		return $scope.clock.getHours() >= 11 && $scope.clock.getHours() < 17
+		console.log($scope.start + " start " + $scope.end + " end");
+		return $scope.clock.getHours() >= $scope.start && $scope.clock.getHours() < $scope.end;
 	};
 
-	$scope.timeTillQuietHours = function () {
-		var hours = $scope.clock.getHours();
-	}
-
 	$scope.pdfUrl = 'img/ProgrammerInterrupted.pdf';
-
+	init();
 	$timeout(tick, $scope.tickInterval);
 }]);

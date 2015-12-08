@@ -30,7 +30,7 @@ angular.module('myApp', [
 	var init = function () {
 		var queryParams = $routeParams.search();
 		$scope.start = queryParams.start || 11;
-		$scope.end = queryParams.end || 7;
+		$scope.end = queryParams.end || 17;
 		validHours($scope.start, $scope.end)
 
 	};
